@@ -1,14 +1,14 @@
 FROM firedrakeproject/firedrake:latest
 
 ENV NB_USER jovyan
-ENV NB_UID 1000
+ENV NB_UID 1200
 ENV HOME /home/${NB_USER}
 
 RUN sudo adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
-RUN pip install --no-cache-dir notebook==5.*
+RUN pip3 install --no-cache-dir notebook==5.*
 
 COPY . ${HOME}
 USER root
