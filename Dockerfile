@@ -1,4 +1,4 @@
-FROM firedrakeproject/firedrake:cce9fd36e4eb
+FROM firedrakeproject/firedrake:723c1220219d
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
