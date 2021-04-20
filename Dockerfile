@@ -22,7 +22,7 @@ ENV OMPI_MCA_btl=tcp,self
 ENV PATH=/home/firedrake/firedrake/bin:$PATH
 
 COPY notebooks /home/firedrake/notebooks
-RUN bash -c "chmod -R 777 /home/firedrake/notebooks"
+RUN bash -c "sudo chmod -R 777 /home/firedrake/notebooks"
 
 
 CMD /home/firedrake/firedrake/bin/jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
