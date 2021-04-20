@@ -8,7 +8,7 @@ RUN sudo adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
-RUN pip3 install --no-cache-dir notebook==5.*
+RUN sudo pip3 install --no-cache-dir notebook==5.*
 
 COPY . ${HOME}
 USER root
