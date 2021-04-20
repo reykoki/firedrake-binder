@@ -3,7 +3,7 @@
 FROM firedrakeproject/firedrake
 
 # This DockerFile is looked after by
-MAINTAINER David Ham <david.ham@imperial.ac.uk>
+#MAINTAINER David Ham <david.ham@imperial.ac.uk>
 
 USER firedrake
 
@@ -14,15 +14,10 @@ RUN bash -c ". /home/firedrake/firedrake/bin/activate && jupyter nbextension ena
 
 # Remove the install log.
 RUN bash -c "rm firedrake-*"
-# Put the notebooks in the working directory for the notebook server.
-RUN bash -c "cp -r firedrake/src/firedrake/docs/notebooks/* ."
 # Strip the output from the notebooks.
-RUN bash -c '. /home/firedrake/firedrake/bin/activate && for file in *.ipynb; do jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace $file; done'
+RUN bash -c '. /home/firedrake/firedrake/bin/activate && for file in firedrake/src/firedrake/docs/notebooks/*.ipynb; do jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace $file; done'
 
 # Now do the same for thetis.
-RUN bash -c "mkdir thetis"
-RUN bash -c "cp -r firedrake/src/thetis/demos/* thetis/."
-RUN bash -c "rm thetis/*.py"
 RUN bash -c '. /home/firedrake/firedrake/bin/activate && for file in thetis/*.ipynb; do jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace $file; done'
 
 # Environment required for Azure deployments.
