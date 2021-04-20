@@ -17,9 +17,6 @@ RUN bash -c "rm firedrake-*"
 # Strip the output from the notebooks.
 RUN bash -c '. /home/firedrake/firedrake/bin/activate && for file in firedrake/src/firedrake/docs/notebooks/*.ipynb; do jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace $file; done'
 
-# Now do the same for thetis.
-RUN bash -c '. /home/firedrake/firedrake/bin/activate && for file in thetis/*.ipynb; do jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace $file; done'
-
 # Environment required for Azure deployments.
 ENV OMPI_MCA_btl=tcp,self
 ENV PATH=/home/firedrake/firedrake/bin:$PATH
