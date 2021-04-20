@@ -1,4 +1,4 @@
-FROM firedrakeproject/firedrake:latest
+FROM firedrakeproject/firedrake-notebooks:latest
 
 ENV NB_USER jovyan
 ENV NB_UID 1200
